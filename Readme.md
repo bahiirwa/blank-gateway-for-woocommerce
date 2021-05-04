@@ -1,6 +1,6 @@
-# ZENGAPAY for WooCommerce 
+# BLANKPAY for WooCommerce 
 
-ZENGAPAY for Woocommerce allows you to accept payment on your Woocommerce store via Mobile Money (Airtel, MTN) with your blankpay account.
+BLANKPAY for Woocommerce allows you to accept payment on your Woocommerce store via Mobile Money (Airtel, MTN) with your blankpay account.
 
 ## License
 License: GPLv2 or later

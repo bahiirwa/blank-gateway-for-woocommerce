@@ -43,7 +43,7 @@ function blankpay_add_webhook_endpoint_callback( $request_data ) {
     $header_hash  = $headers['x_blankpay_signature'][0];
     $secret       = get_option( 'woocommerce_blankpay_payment_settings' )['secretKey'];
     
-    // Verify the header X-ZENGAPAY-SIGNATURE.
+    // Verify the header X-BLANKPAY-SIGNATURE.
     $security = hash_hmac( 'sha256', $transactionReference . $msisdn . $order_amount , $secret );
 	
 	if ( $security !== $header_hash ) {

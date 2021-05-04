@@ -5,7 +5,7 @@
 function blankpay_setup_post_type() {
     $args = array(
         'public'    => true,
-        'label'     => __( 'ZENGAPAY', 'textdomain' ),
+        'label'     => __( 'BLANKPAY', 'textdomain' ),
         'menu_icon' => 'dashicons-analytics',
         'supports'  => array( 'title' ),
         'capabilities' => array(

@@ -50,8 +50,8 @@ if ( ! class_exists( 'WC_BlankPay_Gateway' ) && class_exists( 'WC_Payment_Gatewa
 			$this->id                   = 'blankpay_payment';
 			$this->icon                 = apply_filters( 'woocommerce_blankpay_icon', plugins_url('/images/blankpay-logo.png', dirname( __FILE__, 1 ) ) );
 			$this->has_fields           = false;
-			$this->method_title         = __( 'ZENGAPAY', 'blankpay-pay-woo');
-			$this->method_description   = __( 'ZENGAPAY.', 'blankpay-pay-woo');
+			$this->method_title         = __( 'BLANKPAY', 'blankpay-pay-woo');
+			$this->method_description   = __( 'BLANKPAY.', 'blankpay-pay-woo');
 	
 			// Get settings.
 			$this->title              = $this->get_option( 'title' );
@@ -81,14 +81,14 @@ if ( ! class_exists( 'WC_BlankPay_Gateway' ) && class_exists( 'WC_Payment_Gatewa
 				'enabled' => array(
 					'title' => __( 'Enable/Disable', 'blankpay-pay-woo'),
 					'type' => 'checkbox',
-					'label' => __( 'Enable or Disable ZENGAPAY', 'blankpay-pay-woo'),
-					'description' => __("This enables ZENGAPAY which allows customers to make payment using Mobile Money."),
+					'label' => __( 'Enable or Disable BLANKPAY', 'blankpay-pay-woo'),
+					'description' => __("This enables BLANKPAY which allows customers to make payment using Mobile Money."),
 					'default' => 'no'
 				),
 				'title' => array(
 					'title' => __( 'Title', 'blankpay-pay-woo'),
 					'type' => 'text',
-					'default' => __( 'ZENGAPAY (Mobile Money Gateway)', 'blankpay-pay-woo'),
+					'default' => __( 'BLANKPAY (Mobile Money Gateway)', 'blankpay-pay-woo'),
 					'desc_tip' => true,
 					'description' => __( 'This controls the title which the user sees during checkout.', 'blankpay-pay-woo')
 				),
@@ -111,24 +111,24 @@ if ( ! class_exists( 'WC_BlankPay_Gateway' ) && class_exists( 'WC_Payment_Gatewa
 					'description' => __( 'The API key is generated in your account dashboard.', 'blankpay-pay-woo'),
 					'type' => 'text',
 					'desc_tip' => true,
-					'default' => sprintf( __( 'Obtain this from your ZENGAPAY Dashboard - %s', 'blankpay-pay-woo'), esc_url( 'https://dashboard.blankpay.com/settings/developer-settings' ) ),
+					'default' => sprintf( __( 'Obtain this from your BLANKPAY Dashboard - %s', 'blankpay-pay-woo'), esc_url( 'https://dashboard.blankpay.com/settings/developer-settings' ) ),
 				),
 				'secretKey' => array(
 					'title' => __( 'Secret Hash', 'blankpay-pay-woo'),
-					'description' => sprintf( __( 'Obtain this from your ZENGAPAY Dashboard - %s', 'blankpay-pay-woo'), esc_url( 'https://dashboard.blankpay.com/settings/developer-settings' ) ),
+					'description' => sprintf( __( 'Obtain this from your BLANKPAY Dashboard - %s', 'blankpay-pay-woo'), esc_url( 'https://dashboard.blankpay.com/settings/developer-settings' ) ),
 					'type' => 'text',
 					'desc_tip' => true,
 					'default' => __( '', 'blankpay-pay-woo'),
 				),
 				'webhook_url' => array(
 					'title'   => __( 'INCOMING WEBHOOK URL', 'blankpay-pay-woo' ),
-					'label'   => sprintf( __( 'I have added <code>%s</code> as my WEBHOOK URL in ZENGAPAY Admin Dashboard.', 'text_domain' ), "$this->domain_url/wp-json/blankpay/v1/payments" ),
+					'label'   => sprintf( __( 'I have added <code>%s</code> as my WEBHOOK URL in BLANKPAY Admin Dashboard.', 'text_domain' ), "$this->domain_url/wp-json/blankpay/v1/payments" ),
 					'type'    => 'checkbox',
 					'default' => 'yes',
 				),
 				'enable_for_virtual' => array(
 					'title'   => __( 'Accept for virtual orders', 'blankpay-pay-woo' ),
-					'label'   => __( 'Accept ZENGAPAY if the order is virtual', 'blankpay-pay-woo' ),
+					'label'   => __( 'Accept BLANKPAY if the order is virtual', 'blankpay-pay-woo' ),
 					'type'    => 'checkbox',
 					'default' => 'yes',
 				),

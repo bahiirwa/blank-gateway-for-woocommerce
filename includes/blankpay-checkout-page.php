@@ -1,6 +1,6 @@
 <?php
 /**
- * Defaults for the ZENGAPAY checkout page.
+ * Defaults for the BLANKPAY checkout page.
  */
 
 add_filter( 'woocommerce_gateway_description', 'blankpay_billing_phone_fields', 20, 2 );
@@ -81,7 +81,7 @@ function blankpay_billing_phone_save_field( $order_id ) {
 function blankpay_billing_phone_show_field_admin_order( $order ) {    
    $order_id = $order->get_id();
    if ( get_post_meta( $order_id, 'blankpay_payment_phone_number', true ) ) {
-       echo '<p><strong>ZENGAPAY Payment number:</strong> ' . get_post_meta( $order_id, 'blankpay_payment_phone_number', true ) . '</p>';
-       echo '<p><strong>ZENGAPAY External Reference:</strong> ' . get_post_meta( $order_id, 'blankpay_external_reference', true ) . '</p>';
+       echo '<p><strong>BLANKPAY Payment number:</strong> ' . get_post_meta( $order_id, 'blankpay_payment_phone_number', true ) . '</p>';
+       echo '<p><strong>BLANKPAY External Reference:</strong> ' . get_post_meta( $order_id, 'blankpay_external_reference', true ) . '</p>';
    }
 }
