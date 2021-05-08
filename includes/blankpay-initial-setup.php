@@ -55,4 +55,4 @@ function wc_blankpay_gateway_plugin_links( $links ) {
 	return array_merge( $plugin_links, $links );
 }
 
-add_filter( 'plugin_action_links_' . BASENAME, 'wc_blankpay_gateway_plugin_links' );
+add_filter( 'plugin_action_links_' . BLANK_BASENAME, 'wc_blankpay_gateway_plugin_links' );
