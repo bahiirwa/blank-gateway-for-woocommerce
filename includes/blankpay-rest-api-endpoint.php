@@ -11,6 +11,7 @@ function blankpay_add_webhook_endpoint() {
   	register_rest_route( 'blankpay/v1', 'payments', array(
 		'methods'  => 'POST',
 		'callback' => 'blankpay_add_webhook_endpoint_callback',
+		'permission_callback' => '__return_true', // If it is to be public.
 	));
 
 }
