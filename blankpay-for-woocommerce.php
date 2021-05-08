@@ -18,35 +18,54 @@
 // Basic Security to avoid brute access to file.
 defined( 'ABSPATH' ) or exit;
 
-// Check if WooCommerce is installed.
-// if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) return;
-
 // Define constants to be used.
-if( ! defined( 'BASENAME' ) ) {
-	define( 'BASENAME', plugin_basename( __FILE__ ) );
+if( ! defined( 'BLANK_BASENAME' ) ) {
+	define( 'BLANK_BASENAME', plugin_basename( __FILE__ ) );
 }
 
-if( ! defined( 'DIR_PATH' ) ) {
-	define( 'DIR_PATH', plugin_dir_path( __FILE__ ) );
+if( ! defined( 'BLANK_PLUGIN_NAME' ) ) {
+	define( 'BLANK_PLUGIN_NAME', 'UCatch for WooCommerce' );
 }
 
-// When plugin is loaded. Call init functions.
-add_action( 'plugins_loaded', 'blankpay_payment_init' );
-add_filter( 'woocommerce_payment_gateways', 'blankpay_payment_gateway_add_to_woo');
+if( ! defined( 'BLANK_DIR_PATH' ) ) {
+	define( 'BLANK_DIR_PATH', plugin_dir_path( __FILE__ ) );
+}
 
-/**
- * Add the gateway class.
- * Add function helpers.
- * 
- * @return void
- */
-function blankpay_payment_init() {
-	require_once DIR_PATH . 'includes/blankpay-initial-setup.php';
-	require_once DIR_PATH . 'includes/class-blankpay-gateway.php';
-	require_once DIR_PATH . 'includes/blankpay-order-statuses.php';
-	require_once DIR_PATH . 'includes/blankpay-checkout-page.php';
-	require_once DIR_PATH . 'includes/blankpay-payments-cpt.php';
-	require_once DIR_PATH . 'includes/blankpay-rest-api-endpoint.php';
+// Check if WooCommerce is installed when Plugins loaded.
+add_action( 'plugins_loaded', 'blank_wc_init', 0 );
+
+function blank_wc_init() {
+
+    if ( ! class_exists( 'WC_Payment_Gateway' ) ) {
+
+		function woocommerce_not_installed_notice() {
+			$message = sprintf(
+				/* translators: URL of WooCommerce plugin */
+				__( 'requires <a href="%s">WooCommerce</a> 3.0 or greater to be installed and active.', 'cashleo-sms-notifications-for-woo' ),
+				'https://wordpress.org/plugins/woocommerce/'
+			);
+		
+			printf( '<div class="error notice notice-error is-dismissible"><p>%s</p></div>', BLANK_PLUGIN_NAME . ' ' . $message ); 
+		}
+
+		// Check if WooCommerce is active
+		add_action( 'admin_notices', 'woocommerce_not_installed_notice' );
+		return;
+	}
+
+	add_filter( 'woocommerce_payment_gateways', 'blank_payment_gateway_add_to_woo');
+
+	/**
+	 * Add the gateway class.
+	 * Add function helpers.
+	 */
+	require_once BLANK_DIR_PATH . 'includes/blank-initial-setup.php';
+	require_once BLANK_DIR_PATH . 'includes/class-blank-gateway.php';
+	require_once BLANK_DIR_PATH . 'includes/blank-order-statuses.php';
+	require_once BLANK_DIR_PATH . 'includes/blank-checkout-page.php';
+	require_once BLANK_DIR_PATH . 'includes/blank-payments-cpt.php';
+	require_once BLANK_DIR_PATH . 'includes/blank-rest-api-endpoint.php';
+	
 }
 
 /**
